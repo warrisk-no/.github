@@ -17,9 +17,12 @@ skills in [claude-skills](https://github.com/warrisk-no/claude-skills).
 ## Issue triage
 
 `.github/workflows/issue-triage.yml` is a reusable workflow. On a new issue it adds the
-labels for the form's security and tech-debt boxes, and if the issue still has no
-work-type label, Claude classifies it: one work-type label, the issue type, existing area
-labels, and a comment when a bug has no evidence or repro. It never edits the issue text.
+labels for the form's security and tech-debt boxes. If the issue still has no work-type
+label, Claude classifies it. Claude has no tools: it only returns JSON (work type, area
+labels, what a bug is missing), and the workflow validates that and applies it to that
+issue alone, so text in an issue can't make it change anything else. A bug without
+evidence or repro, from the form or from Claude, gets one comment asking for them.
+Anyone who can open an issue is triaged, write access or not.
 
 A repo turns it on with `.github/workflows/issue-triage.yml`:
 
