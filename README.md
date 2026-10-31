@@ -16,36 +16,6 @@ skills in [claude-skills](https://github.com/warrisk-no/claude-skills).
 
 ## Issue triage
 
-`.github/workflows/issue-triage.yml` is a reusable workflow. On a new issue it adds the
-labels for the form's security and tech-debt boxes. If the issue still has no work-type
-label, Claude classifies it. Claude has no tools: it only returns JSON (work type, area
-labels, what a bug is missing), and the workflow validates that and applies it to that
-issue alone, so text in an issue can't make it change anything else. A bug without
-evidence or repro, from the form or from Claude, gets one comment asking for them.
-Anyone who can open an issue is triaged, write access or not.
-
-A repo turns it on with `.github/workflows/issue-triage.yml`:
-
-```yaml
-name: Issue triage
-
-on:
-  issues:
-    types: [opened]
-
-permissions:
-  contents: read
-  issues: write
-  id-token: write
-
-jobs:
-  triage:
-    uses: warrisk-no/.github/.github/workflows/issue-triage.yml@main
-```
-
-Claude authenticates with Anthropic workload identity federation, so there is no API key:
-the job's GitHub OIDC token is exchanged for a short-lived Anthropic token. The IDs are org
-Actions variables (`ANTHROPIC_FEDERATION_RULE_ID`, `ANTHROPIC_ORGANIZATION_ID`,
-`ANTHROPIC_SERVICE_ACCOUNT_ID`, `ANTHROPIC_WORKSPACE_ID`). The federation rule in the
-Claude Console only admits tokens whose `job_workflow_ref` is this workflow on `main`, so
-no other workflow can obtain an Anthropic token through it.
+New issues are triaged by GitHub's issue triage agent automation, configured per repo. Its
+instructions are kept in [`issue-triage-instructions.md`](issue-triage-instructions.md):
+change them there in a PR, then paste them into the automation's settings.
