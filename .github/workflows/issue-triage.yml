@@ -70,6 +70,10 @@ jobs:
         } >> "$GITHUB_OUTPUT"
         echo "labels: $labels (work type found: $found)"
 
+    # claude-code-action configures git in the workspace, even with no tools
+    - uses: actions/checkout@v4
+      if: steps.labels.outputs.found == 'false'
+
     - name: Classify with Claude
       id: claude
       if: steps.labels.outputs.found == 'false'
@@ -83,6 +87,8 @@ jobs:
         # Anyone who can open an issue gets triaged; Claude has no tools, so
         # this grants nothing beyond a classification the next step validates.
         allowed_non_write_users: '*'
+        # Claude's result, errors included, in the job log (caller repos are private)
+        show_full_output: true
         claude_args: >-
           --model claude-haiku-5-5
           --max-turns 2
