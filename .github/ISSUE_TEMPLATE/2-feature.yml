@@ -1,0 +1,24 @@
+name: Feature or enhancement
+description: New capability, or a change to how something works that isn't a bug
+type: Feature
+labels: [feature]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Need
+      description: What is missing or needed, and for whom. Then why.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What it replaces or enables. For a change to existing behaviour, what it does now and what it should do.
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Observable, testable outcomes, one per line.
+      placeholder: |
+        - ...

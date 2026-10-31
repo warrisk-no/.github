@@ -1,0 +1,28 @@
+name: Decision
+description: Something a person has to decide before work can go on
+type: Task
+labels: [decision]
+body:
+  - type: textarea
+    id: decide
+    attributes:
+      label: What has to be decided
+      description: And what is blocked until then.
+    validations:
+      required: true
+  - type: textarea
+    id: options
+    attributes:
+      label: Options
+      description: Each option and its consequence.
+    validations:
+      required: true
+  - type: textarea
+    id: recommendation
+    attributes:
+      label: Recommendation
+  - type: input
+    id: who
+    attributes:
+      label: Who decides
+      placeholder: "@login"

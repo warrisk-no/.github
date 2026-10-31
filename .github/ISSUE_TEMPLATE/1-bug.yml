@@ -1,0 +1,34 @@
+name: Bug
+description: Something that shipped behaves wrongly (use this for security findings too)
+type: Bug
+labels: [bug]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What goes wrong, and for whom. Then how and why it happens, if you know.
+      placeholder: Members of a subsidiary see no invoices since the last Paris sync. ...
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: "`file:line`, log lines, queries, screenshots: one per claim."
+  - type: textarea
+    id: repro
+    attributes:
+      label: Repro
+      description: Steps or commands, where they ran, expected versus actual. Say what you didn't test.
+  - type: textarea
+    id: fix
+    attributes:
+      label: Fix
+      description: The change you'd make, if you know.
+  - type: checkboxes
+    id: security
+    attributes:
+      label: Security
+      options:
+        - label: This is a security issue (someone can see or do something they shouldn't)
