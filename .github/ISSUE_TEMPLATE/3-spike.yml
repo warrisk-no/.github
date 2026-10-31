@@ -1,0 +1,27 @@
+name: Spike
+description: Time-boxed investigation; the output is a decision or a doc, not shipped code
+type: Task
+labels: [spike]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What has to be found out, and what is blocked until then.
+    validations:
+      required: true
+  - type: input
+    id: timebox
+    attributes:
+      label: Time box
+      placeholder: 1 day
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Done when
+      value: |
+        - The answer is written on this issue, with evidence
+        - At least two options compared on effort, risk and deploy impact, with a recommendation
+        - Implementation issues filed, or "don't do it" recorded with the reason
